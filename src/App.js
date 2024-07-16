@@ -11,21 +11,14 @@ function App() {
   return (
     <Router>
       <CartProvider>
-        <Routes>
-          <Route path="/cart" element={<CartPage />} />
-          <Route
-            path="*"
-            element={
-              <PageTransition>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/shop" element={<ProductPage />} />
-                  <Route path="/checkout" element={<CheckoutPage />} />
-                </Routes>
-              </PageTransition>
-            }
-          />
-        </Routes>
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/shop" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+          </Routes>
+        </PageTransition>
       </CartProvider>
     </Router>
   );
