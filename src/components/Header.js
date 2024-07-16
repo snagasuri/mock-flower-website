@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingCart, Menu } from 'lucide-react';
+import { Search, Menu } from 'lucide-react';
+import ShoppingCart from './ShoppingCart';
 
 const Header = () => (
   <header className="flex justify-between items-center p-4 bg-pink-300 text-white">
@@ -14,7 +15,7 @@ const Header = () => (
     </div>
     <div className="flex items-center space-x-4">
       <Search className="h-6 w-6 cursor-pointer" />
-      <ShoppingCart className="h-6 w-6 cursor-pointer" />
+      <ShoppingCart />
       <Menu className="h-6 w-6 cursor-pointer" />
     </div>
   </header>
