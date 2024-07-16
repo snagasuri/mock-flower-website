@@ -6,7 +6,7 @@ const products = Array(30).fill().map((_, index) => ({
   id: index + 1,
   name: `Product ${index + 1}`,
   price: ((index + 1) * 3.50).toFixed(2),
-  image: 'C:\\Users\\ramna\\Documents\\flower-website\\test.png'
+  image: 'test.png'
 }));
 
 const ProductPage = () => (
