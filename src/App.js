@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import PageTransition from './components/PageTransition';
+import { CartProvider } from './contexts/CartContext';
 
 function App() {
   return (
     <Router>
-      <AppContent />
+      <CartProvider>
+        <AppContent />
+      </CartProvider>
     </Router>
   );
 }
