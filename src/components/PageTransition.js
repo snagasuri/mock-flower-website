@@ -6,15 +6,17 @@ const PageTransition = ({ children }) => {
   const location = useLocation();
 
   return (
-    <TransitionGroup>
-      <CSSTransition
-        key={location.pathname}
-        classNames="fade"
-        timeout={300}
-      >
-        {children}
-      </CSSTransition>
-    </TransitionGroup>
+    <div className="relative overflow-hidden">
+      <TransitionGroup>
+        <CSSTransition
+          key={location.pathname}
+          classNames="slide"
+          timeout={500}
+        >
+          {children}
+        </CSSTransition>
+      </TransitionGroup>
+    </div>
   );
 };
 

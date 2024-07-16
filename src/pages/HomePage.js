@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import testImage from './test.png';
 
 const HomePage = () => (
-  <div className="min-h-screen">
+  <div className="min-h-screen pink-bg">
     <Header />
     <main className="container mx-auto px-4 py-8 flex flex-col items-center justify-center h-[calc(100vh-80px)]">
       <div className="relative w-full max-w-2xl aspect-square">
