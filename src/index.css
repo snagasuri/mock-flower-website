@@ -14,4 +14,28 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}.fade-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+body {
+  background-color: #fbb6ce; /* This is the Tailwind pink-300 color */
 }
