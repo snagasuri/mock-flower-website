@@ -10,7 +10,7 @@ const HomePage = () => (
         <img src={testImage} alt="Beautiful flower arrangement" className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
           <p className="text-xl mb-6">fresh flowers for every occasion</p>
-          <button className="bg-white text-pink-400 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+          <button className="bg-white text-pink-500 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
             shop now
           </button>
         </div>
