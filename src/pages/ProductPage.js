@@ -1,12 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
+import testImage from './test.png';
 
 const products = Array(30).fill().map((_, index) => ({
   id: index + 1,
   name: `Product ${index + 1}`,
   price: ((index + 1) * 3.50).toFixed(2),
-  image: 'test.png'
+  image: testImage
 }));
 
 const ProductPage = () => (
