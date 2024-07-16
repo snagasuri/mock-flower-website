@@ -10,7 +10,7 @@ const CartPage = () => {
     <div className="min-h-screen bg-white-300 flex flex-col">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <div className="max-w-2xl mx-auto">
           <h1 className="text-2xl font-bold mb-4 lowercase">your shopping cart</h1>
           {cart.length === 0 ? (
             <p>your cart is empty.</p>
