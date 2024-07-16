@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 
-const ProductCard = ({ name, price, image }) => {
+const ProductCard = ({ id, name, price, image }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    console.log(`Added ${name} to cart`);
-    // Implement actual add to cart functionality here
+    addToCart({ id, name: name + 's', price, image });
   };
 
   return (
@@ -28,7 +29,7 @@ const ProductCard = ({ name, price, image }) => {
         )}
       </div>
       <div className="mt-4 text-left">
-        <h3 className="text-lg font-medium">{name}</h3>
+        <h3 className="text-lg font-medium">{name + 's'}</h3>
         <p className="text-md text-gray-600">£{price}</p>
       </div>
     </div>
