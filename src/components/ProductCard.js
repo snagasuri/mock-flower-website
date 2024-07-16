@@ -15,7 +15,7 @@ const ProductCard = ({ name, price, image }) => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={image} alt={name} className="w-full h-64 object-cover" />
+        <img src={image} alt={name} className="w-full aspect-square object-cover" />
         {isHovered && (
           <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button 
