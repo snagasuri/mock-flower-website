@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
 import PageTransition from './components/PageTransition';
 import { CartProvider } from './contexts/CartContext';
 
@@ -23,6 +24,7 @@ function AppContent() {
       <Routes location={location}>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </PageTransition>
   );

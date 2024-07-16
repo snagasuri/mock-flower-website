@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
+import { ShoppingCart as CartIcon } from 'lucide-react';
 
 const ShoppingCart = () => {
-  const { cart, removeFromCart } = useContext(CartContext);
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const toggleExpand = () => setIsExpanded(!isExpanded);
+  const { cart } = useContext(CartContext);
+  const [isHovered, setIsHovered] = useState(false);
 
   const MiniCart = () => (
     <div className="absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-lg overflow-hidden">
@@ -22,58 +22,29 @@ const ShoppingCart = () => {
           </div>
         )}
       </div>
-      <button
-        onClick={toggleExpand}
-        className="w-full bg-green-500 text-white py-2 hover:bg-green-600 transition-colors"
-      >
-        View Full Cart
-      </button>
-    </div>
-  );
-
-  const FullCart = () => (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-4/5 shadow-lg rounded-md bg-white">
-        <div className="mt-3 text-center">
-          <h3 className="text-lg leading-6 font-medium text-gray-900">Shopping Cart</h3>
-          <div className="mt-2 px-7 py-3">
-            {cart.map((item) => (
-              <div key={item.id} className="flex items-center justify-between py-4 border-b">
-                <img src={item.image} alt={item.name} className="w-16 h-16 object-cover" />
-                <h3 className="text-lg font-medium">{item.name}</h3>
-                <p className="text-md text-gray-600">£{item.price}</p>
-                <button
-                  onClick={() => removeFromCart(item.id)}
-                  className="text-red-500 hover:text-red-700"
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-          </div>
-          <div className="items-center px-4 py-3">
-            <button
-              onClick={toggleExpand}
-              className="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
-            >
-              Checkout
-            </button>
-          </div>
-        </div>
-      </div>
+      <Link to="/cart">
+        <button className="w-full bg-green-500 text-white py-2 hover:bg-green-600 transition-colors">
+          View Full Cart
+        </button>
+      </Link>
     </div>
   );
 
   return (
-    <div className="relative">
-      <button
-        onClick={toggleExpand}
-        className="bg-white p-2 rounded-full hover:bg-gray-100 transition-colors"
-      >
-        🛒 ({cart.length})
-      </button>
-      {!isExpanded && cart.length > 0 && <MiniCart />}
-      {isExpanded && <FullCart />}
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Link to="/cart">
+        <CartIcon className="h-6 w-6 cursor-pointer" />
+      </Link>
+      {cart.length > 0 && (
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+          {cart.length}
+        </span>
+      )}
+      {isHovered && cart.length > 0 && <MiniCart />}
     </div>
   );
 };
