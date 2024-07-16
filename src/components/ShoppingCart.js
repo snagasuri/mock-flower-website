@@ -8,7 +8,7 @@ const ShoppingCart = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const MiniCart = () => (
-    <div className="absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-lg overflow-hidden">
+    <div className="absolute right-0 mt-2 w-64 bg-white shadow-xl rounded-lg overflow-hidden z-50">
       <div className="p-4 max-h-48 overflow-y-auto">
         {cart.slice(0, 3).map((item) => (
           <div key={item.id} className="flex justify-between items-center mb-2">
@@ -23,8 +23,8 @@ const ShoppingCart = () => {
         )}
       </div>
       <Link to="/cart">
-        <button className="w-full bg-green-500 text-white py-2 hover:bg-green-600 transition-colors">
-          View Full Cart
+        <button className="w-full bg-gray-300 text-black py-2 hover:bg-gray-400 transition-colors lowercase">
+          view full cart
         </button>
       </Link>
     </div>
