@@ -22,13 +22,15 @@ const ShoppingCart = () => {
       {isHovered && cart.length > 0 && (
         <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10">
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2">Cart Items</h3>
-            {cart.map((item, index) => (
-              <div key={index} className="flex justify-between items-center mb-2">
-                <span>{item.name}</span>
-                <span>£{item.price}</span>
-              </div>
-            ))}
+            <h3 className="text-lg font-semibold mb-2 lowercase">your cart</h3>
+            <ul className="list-disc list-inside">
+              {cart.map((item, index) => (
+                <li key={index} className="mb-1 text-sm">
+                  <span className="lowercase">{item.name}</span>
+                  <span className="float-right">£{item.price}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       )}
