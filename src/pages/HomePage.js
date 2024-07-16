@@ -3,9 +3,9 @@ import Header from '../components/Header';
 import testImage from './test.png';
 
 const HomePage = () => (
-  <div className="min-h-screen pink-bg">
+  <div className="min-h-screen pink-bg flex flex-col">
     <Header />
-    <main className="container mx-auto px-4 py-8 flex flex-col items-center justify-center h-[calc(100vh-80px)]">
+    <main className="flex-grow container mx-auto px-4 py-8 flex flex-col items-center justify-center">
       <div className="relative w-full max-w-2xl aspect-square">
         <img src={testImage} alt="Beautiful flower arrangement" className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
