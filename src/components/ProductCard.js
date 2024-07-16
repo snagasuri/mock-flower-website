@@ -29,7 +29,7 @@ const ProductCard = ({ id, name, price, image }) => {
         )}
       </div>
       <div className="mt-4 text-left">
-        <h3 className="text-lg font-medium">{name + 's'}</h3>
+        <h3 className="text-lg font-medium lowercase">{name + 's'}</h3>
         <p className="text-md text-gray-600">£{price}</p>
       </div>
     </div>
