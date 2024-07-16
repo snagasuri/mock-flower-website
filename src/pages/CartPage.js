@@ -36,8 +36,9 @@ const CartPage = () => {
                   proceed to checkout
                 </button>
               </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </main>
     </div>
   );
