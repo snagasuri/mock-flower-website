@@ -17,7 +17,7 @@ const products = flowerNames.map((name, index) => ({
 }));
 
 const ProductPage = () => (
-  <div className="min-h-screen pink-bg flex flex-col">
+  <div className="min-h-screen bg-pink-300 flex flex-col">
     <Header />
     <main className="flex-grow container mx-auto px-4 py-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
