@@ -17,21 +17,25 @@ code {
 }
 
 .slide-enter {
-  transform: translateY(100%);
+  transform: translateY(0);
+  clip-path: inset(0 0 100% 0);
 }
 
 .slide-enter-active {
   transform: translateY(0);
-  transition: transform 500ms ease-in-out;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 500ms ease-in-out;
 }
 
 .slide-exit {
   transform: translateY(0);
+  clip-path: inset(0 0 0 0);
 }
 
 .slide-exit-active {
-  transform: translateY(-100%);
-  transition: transform 500ms ease-in-out;
+  transform: translateY(0);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 500ms ease-in-out;
 }
 
 body {
@@ -40,5 +44,5 @@ body {
 }
 
 .pink-bg {
-  background-color: #fbb6ce; /* This is the Tailwind pink-300 color */
+  background-color: #f472b6; /* This is the Tailwind pink-400 color */
 }
