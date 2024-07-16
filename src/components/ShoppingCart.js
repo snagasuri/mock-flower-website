@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import { ShoppingCart as CartIcon } from 'lucide-react';
@@ -7,10 +7,26 @@ const ShoppingCart = () => {
   const { cart } = useContext(CartContext);
   const [isHovered, setIsHovered] = useState(false);
 
+  useEffect(() => {
+    console.log('Cart contents:', cart);
+  }, [cart]);
+
+  const handleMouseEnter = () => {
+    console.log('Mouse entered');
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    console.log('Mouse left');
+    setIsHovered(false);
+  };
+
+  console.log('Render - isHovered:', isHovered, 'cart length:', cart.length);
+
   return (
     <div className="relative"
-         onMouseEnter={() => setIsHovered(true)}
-         onMouseLeave={() => setIsHovered(false)}>
+         onMouseEnter={handleMouseEnter}
+         onMouseLeave={handleMouseLeave}>
       <Link to="/cart">
         <CartIcon className="h-6 w-6 cursor-pointer" />
         {cart.length > 0 && (

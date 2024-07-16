@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const CartContext = createContext();
 
@@ -8,29 +8,36 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
-      setCart(JSON.parse(savedCart));
+      const parsedCart = JSON.parse(savedCart);
+      console.log('Loaded cart from localStorage:', parsedCart);
+      setCart(parsedCart);
     }
   }, []);
 
   useEffect(() => {
+    console.log('Saving cart to localStorage:', cart);
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (item) => {
+  const addToCart = useCallback((item) => {
     setCart((prevCart) => {
       console.log('Adding to cart:', item);
       console.log('Previous cart:', prevCart);
-      return [...prevCart, item];
+      const newCart = [...prevCart, item];
+      console.log('New cart:', newCart);
+      return newCart;
     });
-  };
+  }, []);
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = useCallback((itemId) => {
     setCart((prevCart) => {
       console.log('Removing from cart:', itemId);
       console.log('Previous cart:', prevCart);
-      return prevCart.filter((item) => item.id !== itemId);
+      const newCart = prevCart.filter((item) => item.id !== itemId);
+      console.log('New cart:', newCart);
+      return newCart;
     });
-  };
+  }, []);
 
   useEffect(() => {
     console.log('Cart updated:', cart);
