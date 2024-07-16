@@ -9,7 +9,7 @@ const ProductCard = ({ name, price, image }) => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <div 
         className="relative group"
         onMouseEnter={() => setIsHovered(true)}
@@ -27,7 +27,7 @@ const ProductCard = ({ name, price, image }) => {
           </div>
         )}
       </div>
-      <div className="mt-4 text-left w-full">
+      <div className="mt-4 text-center">
         <h3 className="text-lg font-medium">{name}</h3>
         <p className="text-md text-gray-600">£{price}</p>
       </div>
