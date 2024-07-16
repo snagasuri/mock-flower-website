@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 const CartPage = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -32,9 +33,11 @@ const CartPage = () => {
                 <p className="text-lg font-bold lowercase">
                   total: £{cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2)}
                 </p>
-                <button className="mt-4 px-6 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400 transition-colors lowercase">
-                  proceed to checkout
-                </button>
+                <Link to="/checkout">
+                  <button className="mt-4 px-6 py-2 bg-gray-300 text-black rounded-full hover:bg-gray-400 transition-colors lowercase">
+                    proceed to checkout
+                  </button>
+                </Link>
               </div>
             </>
           )}

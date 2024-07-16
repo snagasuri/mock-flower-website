@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
 import PageTransition from './components/PageTransition';
 import { CartProvider } from './contexts/CartContext';
 
@@ -25,6 +26,7 @@ function AppContent() {
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ProductPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </PageTransition>
   );
