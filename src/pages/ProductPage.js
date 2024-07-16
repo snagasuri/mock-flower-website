@@ -19,17 +19,17 @@ const products = flowerNames.map((name, index) => ({
 const ProductPage = () => (
   <div className="min-h-screen bg-white-300 flex flex-col">
     <Header />
-    <main className="flex-grow container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <main className="flex-grow container mx-auto px-6 py-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
         {products.map(product => (
           <ProductCard key={product.id} {...product} />
         ))}
       </div>
       
       {/* Pagination placeholder */}
-      <div className="mt-12 flex justify-center">
-        <button className="mx-2 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">Previous</button>
-        <button className="mx-2 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">Next</button>
+      <div className="mt-16 flex justify-center">
+        <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Previous</button>
+        <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Next</button>
       </div>
     </main>
   </div>
