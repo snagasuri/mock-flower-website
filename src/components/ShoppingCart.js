@@ -7,6 +7,10 @@ const ShoppingCart = () => {
   const { cart } = useContext(CartContext);
   const [isHovered, setIsHovered] = useState(false);
 
+  useEffect(() => {
+    console.log('ShoppingCart component - cart:', cart);
+  }, [cart]);
+
   return (
     <div className="relative"
          onMouseEnter={() => setIsHovered(true)}
@@ -19,21 +23,21 @@ const ShoppingCart = () => {
           </span>
         )}
       </Link>
-      {isHovered && cart.length > 0 && (
-        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10">
-          <div className="p-4">
-            <h3 className="text-lg font-semibold mb-2 lowercase">your cart</h3>
-            <ul className="list-disc list-inside">
-              {cart.map((item, index) => (
-                <li key={index} className="mb-1 text-sm">
-                  <span className="lowercase">{item.name}</span>
-                  <span className="float-right">£{item.price}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Debug: Always show cart contents */}
+      <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10">
+        <div className="p-4">
+          <h3 className="text-lg font-semibold mb-2 lowercase">your cart (debug)</h3>
+          <ul className="list-disc list-inside">
+            {cart.map((item, index) => (
+              <li key={index} className="mb-1 text-sm">
+                <span className="lowercase">{item.name}</span>
+                <span className="float-right">£{item.price}</span>
+              </li>
+            ))}
+          </ul>
+          {cart.length === 0 && <p>Cart is empty</p>}
         </div>
-      )}
+      </div>
     </div>
   );
 };

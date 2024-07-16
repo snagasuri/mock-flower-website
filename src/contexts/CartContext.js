@@ -17,12 +17,24 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
+    setCart((prevCart) => {
+      console.log('Adding to cart:', item);
+      console.log('Previous cart:', prevCart);
+      return [...prevCart, item];
+    });
   };
 
   const removeFromCart = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+    setCart((prevCart) => {
+      console.log('Removing from cart:', itemId);
+      console.log('Previous cart:', prevCart);
+      return prevCart.filter((item) => item.id !== itemId);
+    });
   };
+
+  useEffect(() => {
+    console.log('Cart updated:', cart);
+  }, [cart]);
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
