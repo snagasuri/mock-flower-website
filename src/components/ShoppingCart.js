@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import { ShoppingCart as CartIcon } from 'lucide-react';
@@ -6,10 +6,6 @@ import { ShoppingCart as CartIcon } from 'lucide-react';
 const ShoppingCart = () => {
   const { cart } = useContext(CartContext);
   const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    console.log('ShoppingCart component - cart:', cart);
-  }, [cart]);
 
   return (
     <div className="relative"
@@ -23,21 +19,26 @@ const ShoppingCart = () => {
           </span>
         )}
       </Link>
-      {/* Debug: Always show cart contents */}
-      <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10">
-        <div className="p-4">
-          <h3 className="text-lg font-semibold mb-2 lowercase">your cart (debug)</h3>
-          <ul className="list-disc list-inside">
-            {cart.map((item, index) => (
-              <li key={index} className="mb-1 text-sm">
-                <span className="lowercase">{item.name}</span>
-                <span className="float-right">£{item.price}</span>
-              </li>
-            ))}
-          </ul>
-          {cart.length === 0 && <p>Cart is empty</p>}
+      {isHovered && cart.length > 0 && (
+        <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10">
+          <div className="p-4">
+            <h3 className="text-lg font-semibold mb-2 lowercase">your cart</h3>
+            <ul className="list-none">
+              {cart.map((item, index) => (
+                <li key={index} className="mb-1 text-sm flex justify-between">
+                  <span className="lowercase">{item.name}</span>
+                  <span>£{item.price}</span>
+                </li>
+              ))}
+            </ul>
+            <Link to="/cart">
+              <button className="mt-4 w-full px-4 py-2 bg-pink-300 text-white rounded-full hover:bg-pink-400 transition-colors lowercase">
+                View Cart
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
