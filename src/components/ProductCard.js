@@ -11,11 +11,11 @@ const ProductCard = ({ name, price, image }) => {
   return (
     <div className="flex flex-col">
       <div 
-        className="relative group"
+        className="relative group bg-white"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={image} alt={name} className="w-full aspect-square object-cover" />
+        <img src={image} alt={name} className="w-full aspect-square object-cover bg-white" />
         {isHovered && (
           <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button 
