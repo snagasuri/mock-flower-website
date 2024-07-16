@@ -3,9 +3,15 @@ import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import testImage from './test.png';
 
-const products = Array(30).fill().map((_, index) => ({
+const flowerNames = [
+  "Rose", "Tulip", "Sunflower", "Lily", "Orchid", "Daisy", "Carnation", "Peony", "Chrysanthemum", "Daffodil",
+  "Iris", "Hydrangea", "Dahlia", "Lavender", "Marigold", "Poppy", "Jasmine", "Gardenia", "Zinnia", "Aster",
+  "Bluebell", "Forget-me-not", "Snapdragon", "Pansy", "Geranium", "Anemone", "Cosmos", "Foxglove", "Lilac", "Camellia"
+];
+
+const products = flowerNames.map((name, index) => ({
   id: index + 1,
-  name: `Product ${index + 1}`,
+  name: name,
   price: ((index + 1) * 3.50).toFixed(2),
   image: testImage
 }));
