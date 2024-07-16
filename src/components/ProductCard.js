@@ -9,13 +9,13 @@ const ProductCard = ({ name, price, image }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white shadow-md rounded-lg overflow-hidden">
       <div 
-        className="relative group bg-white"
+        className="relative group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={image} alt={name} className="w-full aspect-square object-cover bg-white" />
+        <img src={image} alt={name} className="w-full aspect-square object-cover" />
         {isHovered && (
           <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button 
@@ -27,7 +27,7 @@ const ProductCard = ({ name, price, image }) => {
           </div>
         )}
       </div>
-      <div className="mt-4 text-left">
+      <div className="p-4">
         <h3 className="text-lg font-medium">{name}</h3>
         <p className="text-md text-gray-600">£{price}</p>
       </div>
