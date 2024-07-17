@@ -8,20 +8,22 @@ import ChatbotForm from './components/ChatbotForm';
 import { CartProvider } from './contexts/CartContext';
 import PageTransition from './components/PageTransition';
 
-const App = () => (
-  <Router>
-    <CartProvider>
-      <PageTransition>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ProductPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/chatbot-setup" element={<ChatbotForm />} />
-        </Routes>
-      </PageTransition>
-    </CartProvider>
-  </Router>
-);
+const App = () => {
+  return (
+    <Router>
+      <CartProvider>
+        <PageTransition>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/shop" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/chatbot-setup" element={<ChatbotForm />} />
+          </Routes>
+        </PageTransition>
+      </CartProvider>
+    </Router>
+  );
+};
 
 export default App;
