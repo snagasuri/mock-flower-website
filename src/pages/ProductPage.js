@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import testImage from './test.png';
+import { CartContext } from '../contexts/CartContext';
 
 const flowerNames = [
   "Rose", "Tulip", "Sunflower", "Lily", "Orchid", "Daisy", "Carnation", "Peony", "Chrysanthemum", "Daffodil",
@@ -19,16 +21,31 @@ const products = flowerNames.map((name, index) => ({
 const ProductPage = () => {
   const [chatMessages, setChatMessages] = useState([]);
   const [chatInput, setChatInput] = useState('');
+  const { cart, addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cart.length === 3) {
+      const addedFlowers = cart.map(item => item.name).join(', ');
+      const botMessage = `I noticed you added ${addedFlowers} to your cart. Are you going to a wedding? If so, you should consider orchids, carnations, and daisies, too.`;
+      setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: botMessage }]);
+    }
+  }, [cart]);
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
     if (chatInput.trim() !== '') {
       setChatMessages([...chatMessages, { type: 'user', content: chatInput }]);
-      setTimeout(() => {
-        setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: 'test received successfully' }]);
-      }, 500);
       setChatInput('');
     }
+  };
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout');
   };
 
   return (
@@ -37,13 +54,13 @@ const ProductPage = () => {
       <main className="flex-grow container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products.map(product => (
-            <ProductCard key={product.id} {...product} />
+            <ProductCard key={product.id} {...product} onAddToCart={() => handleAddToCart(product)} />
           ))}
         </div>
-        {/* Pagination placeholder */}
         <div className="mt-16 flex justify-center">
-          <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Previous</button>
-          <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Next</button>
+          <button onClick={handleCheckout} className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">
+            Checkout
+          </button>
         </div>
       </main>
       <div className="fixed bottom-4 right-4 w-80 bg-white rounded-lg shadow-lg overflow-hidden">
