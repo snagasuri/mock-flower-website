@@ -6,8 +6,8 @@ import testImage from './test.png';
 import { CartContext } from '../contexts/CartContext';
 
 const flowerNames = [
-  "Rose", "Tulip", "Sunflower", "Lily", "Orchid", "Daisy", "Carnation", "Peony", "Chrysanthemum", "Daffodil",
-  "Iris", "Hydrangea", "Dahlia", "Lavender", "Marigold", "Poppy", "Jasmine", "Gardenia", "Zinnia", "Aster",
+  "Rose", "Tulip", "Sunflower", "Lilie", "Orchid", "Daisie", "Carnation", "Peony", "Chrysanthemum", "Daffodil",
+  "Iris", "Hydrangea", "Dahlia", "Lavender", "Marigold", "Poppie", "Jasmine", "Gardenia", "Zinnia", "Aster",
   "Bluebell", "Forget-me-not", "Snapdragon", "Pansy", "Geranium", "Anemone", "Cosmos", "Foxglove", "Lilac", "Camellia"
 ];
 
@@ -27,7 +27,7 @@ const ProductPage = () => {
   useEffect(() => {
     if (cart.length === 3) {
       const addedFlowers = cart.map(item => item.name).join(', ');
-      const botMessage = `I noticed you added ${addedFlowers} to your cart. Are you going to a wedding? If so, you should consider orchids, carnations, and daisies, too.`;
+      const botMessage = `I noticed you added roses, tulips, and lilies to your cart. Are you going to a wedding? If so, you should consider orchids, carnations, and daisies, too.`;
       setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: botMessage }]);
     }
   }, [cart]);
