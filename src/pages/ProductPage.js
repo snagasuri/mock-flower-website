@@ -17,8 +17,8 @@ const products = flowerNames.map((name, index) => ({
 }));
 
 const ProductPage = () => {
-  const [chatMessage, setChatMessage] = React.useState('');
-  const [chatResponse, setChatResponse] = React.useState('');
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatResponse, setChatResponse] = useState('');
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +34,11 @@ const ProductPage = () => {
           {products.map(product => (
             <ProductCard key={product.id} {...product} />
           ))}
+        </div>
+        {/* Pagination placeholder */}
+        <div className="mt-16 flex justify-center">
+          <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Previous</button>
+          <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Next</button>
         </div>
       </main>
       <div className="fixed bottom-4 right-4 w-64 bg-white rounded-lg shadow-lg overflow-hidden">
@@ -56,15 +61,6 @@ const ProductPage = () => {
         </div>
       </div>
     </div>
-  );
-};
-      {/* Pagination placeholder */}
-      <div className="mt-16 flex justify-center">
-        <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Previous</button>
-        <button className="mx-3 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">Next</button>
-      </div>
-    </main>
-  </div>
   );
 };
 
