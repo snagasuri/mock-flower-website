@@ -63,6 +63,12 @@ const ChatbotForm = () => {
   const [welcomeMessage, setWelcomeMessage] = useState('');
   const [defaultResponse, setDefaultResponse] = useState('');
   const [dataCollection, setDataCollection] = useState(false);
+  
+  // New layout options
+  const [location, setLocation] = useState('bottom-right');
+  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+  const [textColor, setTextColor] = useState('#000000');
+  const [fontSize, setFontSize] = useState('16');
 
   const handleGoalsChange = (event) => {
     const value = event.target.value;
