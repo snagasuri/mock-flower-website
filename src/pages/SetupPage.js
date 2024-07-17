@@ -50,20 +50,20 @@ const plans = [
 const PricingPlan = ({ plan }) => (
   <div className={`border p-4 rounded-lg shadow-lg flex flex-col ${plan.recommended ? 'border-teal-500 border-2' : ''}`}>
     {plan.recommended && (
-      <div className="bg-teal-500 text-white p-1 rounded-t-lg text-center">
-        RECOMMENDED
+      <div className="bg-teal-500 text-white p-1 rounded-t-lg text-center lowercase">
+        recommended
       </div>
     )}
-    <h2 className="text-xl font-semibold mb-2">{plan.name}</h2>
+    <h2 className="text-xl font-semibold mb-2 lowercase">{plan.name}</h2>
     <div className="flex items-baseline mb-2">
-      <span className="text-2xl font-bold">{plan.price}</span>
-      <span className="text-gray-500 line-through ml-2">{plan.originalPrice}</span>
-      <span className="text-green-500 ml-2">{plan.discount}</span>
+      <span className="text-2xl font-bold lowercase">{plan.price}</span>
+      <span className="text-gray-500 line-through ml-2 lowercase">{plan.originalPrice}</span>
+      <span className="text-green-500 ml-2 lowercase">{plan.discount}</span>
     </div>
-    <button className="bg-black text-white p-2 rounded-lg mb-4">Add to Cart</button>
+    <div className="bg-black w-full h-10 mb-4"></div>
     <ul className="text-sm space-y-2">
       {plan.features.map((feature, index) => (
-        <li key={index}>{feature}</li>
+        <li key={index} className="lowercase">{feature}</li>
       ))}
     </ul>
   </div>
@@ -73,26 +73,17 @@ const SetupPage = () => (
   <div className="min-h-screen bg-gray-100 flex flex-col">
     <Header />
     <div className="flex-grow container mx-auto px-6 py-12 flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4">Pick the right plan for your site</h1>
-      <div className="flex mb-8">
-        <button className="bg-gray-200 p-2 rounded-l-lg">Billed monthly</button>
-        <button className="bg-black text-white p-2 rounded-r-lg">Billed yearly UP TO 50% OFF</button>
-      </div>
-      <div className="flex space-x-4">
-        <button className="bg-gray-200 p-2 rounded">Remove GoDaddy ads</button>
-        <button className="bg-gray-200 p-2 rounded">Add unlimited pages</button>
-        <button className="bg-gray-200 p-2 rounded">Professional email for a year</button>
-      </div>
+      <h1 className="text-2xl font-bold mb-4 lowercase">pick the right plan for your site</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         {plans.map((plan, index) => (
           <PricingPlan key={index} plan={plan} />
         ))}
       </div>
-      <button className="mt-8 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg">
-        Compare Plans
+      <button className="mt-8 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors text-lg lowercase">
+        compare plans
       </button>
       <div className="mt-8">
-        <h2 className="text-lg font-semibold">More features with each plan</h2>
+        <h2 className="text-lg font-semibold lowercase">more features with each plan</h2>
       </div>
     </div>
   </div>
