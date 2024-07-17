@@ -40,7 +40,7 @@ const ProductPage = () => {
       // Check if the user's input is "awesome, thank you so much"
       if (chatInput.toLowerCase() === 'awesome, thank you so much') {
         setTimeout(() => {
-          setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: "No problem, just let me know what else you need!" }]);
+          setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: "No problem, just let me know if you need anything else!" }]);
         }, 500);
       }
       
