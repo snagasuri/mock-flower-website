@@ -36,6 +36,14 @@ const ProductPage = () => {
     e.preventDefault();
     if (chatInput.trim() !== '') {
       setChatMessages([...chatMessages, { type: 'user', content: chatInput }]);
+      
+      // Check if the user's input is "awesome, thank you so much"
+      if (chatInput.toLowerCase() === 'awesome, thank you so much') {
+        setTimeout(() => {
+          setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: "No problem, just let me know what else you need!" }]);
+        }, 500);
+      }
+      
       setChatInput('');
     }
   };
