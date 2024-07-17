@@ -65,6 +65,7 @@ const ProductPage = () => {
       </div>
     </main>
   </div>
-);
+  );
+};
 
 export default ProductPage;
