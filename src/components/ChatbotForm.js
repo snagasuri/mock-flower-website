@@ -78,6 +78,21 @@ const ChatbotForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
+    console.log({
+      themeMode,
+      botName,
+      description,
+      purpose,
+      goals,
+      welcomeMessage,
+      defaultResponse,
+      dataCollection,
+      // New layout options
+      location,
+      backgroundColor,
+      textColor,
+      fontSize
+    });
     // After successful submission, navigate to the success page
     navigate('/chatbot-success');
   };
@@ -204,6 +219,62 @@ const ChatbotForm = () => {
                 />
               }
               label="Enable Data Collection"
+              className="form-field"
+            />
+            {/* Layout Options */}
+            <Typography variant="h6" gutterBottom sx={{ mt: 4 }}>
+              Layout Options
+            </Typography>
+            <FormControl fullWidth margin="normal">
+              <InputLabel id="location-label">Location</InputLabel>
+              <Select
+                labelId="location-label"
+                id="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                label="Location"
+              >
+                <MenuItem value="bottom-right">Bottom Right</MenuItem>
+                <MenuItem value="bottom-left">Bottom Left</MenuItem>
+                <MenuItem value="top-right">Top Right</MenuItem>
+                <MenuItem value="top-left">Top Left</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="backgroundColor"
+              label="Background Color"
+              name="backgroundColor"
+              type="color"
+              value={backgroundColor}
+              onChange={(e) => setBackgroundColor(e.target.value)}
+              className="form-field"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="textColor"
+              label="Text Color"
+              name="textColor"
+              type="color"
+              value={textColor}
+              onChange={(e) => setTextColor(e.target.value)}
+              className="form-field"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="fontSize"
+              label="Font Size (px)"
+              name="fontSize"
+              type="number"
+              value={fontSize}
+              onChange={(e) => setFontSize(e.target.value)}
+              inputProps={{ min: "12", max: "24" }}
               className="form-field"
             />
             <Box sx={{ mt: 4 }}>
