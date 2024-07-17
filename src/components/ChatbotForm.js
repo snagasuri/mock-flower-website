@@ -187,28 +187,7 @@ const ChatbotForm = () => {
                 <MenuItem value="market-sale-products">Market On Sale Products</MenuItem>
               </Select>
             </FormControl>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              id="welcomeMessage"
-              label="Welcome Message"
-              name="welcomeMessage"
-              value={welcomeMessage}
-              onChange={(e) => setWelcomeMessage(e.target.value)}
-              className="form-field"
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              id="defaultResponse"
-              label="Default Response"
-              name="defaultResponse"
-              value={defaultResponse}
-              onChange={(e) => setDefaultResponse(e.target.value)}
-              className="form-field"
-            />
+           
             <FormControlLabel
               control={
                 <Switch
@@ -257,7 +236,7 @@ const ChatbotForm = () => {
               margin="normal"
               fullWidth
               id="textColor"
-              label="Text Color"
+              label="Head Color"
               name="textColor"
               type="color"
               value={textColor}

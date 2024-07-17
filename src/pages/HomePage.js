@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
-import testImage from './test.png';
+import testImage from './hii.png';
 
 const HomePage = () => (
-  <div className="min-h-screen bg-pink-300 flex flex-col">
+  <div className="min-h-screen bg-pink-300 flex flex-col" style={{ overflow: 'hidden' }}>
     <Header />
     <main className="flex-grow container mx-auto px-6 py-12 flex flex-col items-center justify-center">
       <div className="relative w-full max-w-4xl aspect-square">

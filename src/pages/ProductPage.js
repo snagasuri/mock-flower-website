@@ -23,27 +23,22 @@ const ProductPage = () => {
   const [chatInput, setChatInput] = useState('');
   const { cart, addToCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const [hasResponded, setHasResponded] = useState(false);
 
   useEffect(() => {
-    if (cart.length === 3) {
-      const addedFlowers = cart.map(item => item.name).join(', ');
-      const botMessage = `I noticed you added roses, tulips, and lilies to your cart. Are you going to a wedding? If so, you should consider orchids, carnations, and daisies, too.`;
-      setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: botMessage }]);
+    if (chatMessages.some(message => message.content.toLowerCase().includes("looking to buy some roses but worried about freshness, do you do well with that?")) && !hasResponded) {
+      setTimeout(() => {
+        const responseMessage = "at margaret's, we take great care of all our flowers to ensure they are fresh and beautiful for your special occasions.";
+        setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: responseMessage }]);
+        setHasResponded(true);
+      }, 500);
     }
-  }, [cart]);
+  }, [chatMessages, hasResponded]);
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
     if (chatInput.trim() !== '') {
       setChatMessages([...chatMessages, { type: 'user', content: chatInput }]);
-      
-      // Check if the user's input is "awesome, thank you so much"
-      if (chatInput.toLowerCase() === 'awesome, thank you so much') {
-        setTimeout(() => {
-          setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: "No problem, just let me know if you need anything else!" }]);
-        }, 500);
-      }
-      
       setChatInput('');
     }
   };
@@ -57,7 +52,7 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white-300 flex flex-col relative">
+    <div className="min-h-screen bg-white-300 flex flex-col relative" style={{ overflow: 'hidden' }}>
       <Header />
       <main className="flex-grow container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -73,7 +68,7 @@ const ProductPage = () => {
       </main>
       <div className="fixed bottom-4 right-4 w-80 bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="bg-[#D20F77] p-3 text-white lowercase">
-          <h3 className="text-xl font-semibold">chat with us</h3>
+          <h3 className="text-xl font-semibold">junior flower intern</h3>
         </div>
         <div className="p-4">
           <div className="mb-4 h-48 overflow-y-auto">

@@ -11,7 +11,7 @@ const Header = () => (
       <Link to="/about" className="hover:underline text-lg">about</Link>
     </nav>
     <div className="text-3xl font-bold lowercase absolute left-1/2 transform -translate-x-1/2">
-      margaret's
+      margaret's flower shop
     </div>
     <div className="flex items-center space-x-6">
       <Search className="h-8 w-8 cursor-pointer" />
