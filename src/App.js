@@ -5,6 +5,7 @@ import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import ChatbotForm from './components/ChatbotForm';
+import ChatbotSuccessPage from './pages/ChatbotSuccessPage';
 import { CartProvider } from './contexts/CartContext';
 import PageTransition from './components/PageTransition';
 
@@ -19,6 +20,7 @@ const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/chatbot-setup" element={<ChatbotForm />} />
+            <Route path="/chatbot-success" element={<ChatbotSuccessPage />} />
           </Routes>
         </PageTransition>
       </CartProvider>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   TextField,
   Button,
@@ -53,6 +54,7 @@ const darkTheme = createTheme({
 });
 
 const ChatbotForm = () => {
+  const navigate = useNavigate();
   const [themeMode, setThemeMode] = useState('light');
   const [botName, setBotName] = useState('');
   const [description, setDescription] = useState('');
@@ -69,7 +71,9 @@ const ChatbotForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic
+    // Handle form submission logic here
+    // After successful submission, navigate to the success page
+    navigate('/chatbot-success');
   };
 
   const handleThemeChange = () => {
