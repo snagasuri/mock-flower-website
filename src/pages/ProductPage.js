@@ -17,13 +17,18 @@ const products = flowerNames.map((name, index) => ({
 }));
 
 const ProductPage = () => {
-  const [chatMessage, setChatMessage] = useState('');
-  const [chatResponse, setChatResponse] = useState('');
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatInput, setChatInput] = useState('');
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
-    setChatResponse('test received successfully');
-    setChatMessage('');
+    if (chatInput.trim() !== '') {
+      setChatMessages([...chatMessages, { type: 'user', content: chatInput }]);
+      setTimeout(() => {
+        setChatMessages(prevMessages => [...prevMessages, { type: 'bot', content: 'test received successfully' }]);
+      }, 500);
+      setChatInput('');
+    }
   };
 
   return (
@@ -47,13 +52,21 @@ const ProductPage = () => {
         </div>
         <div className="p-4">
           <div className="mb-4 h-32 overflow-y-auto">
-            {chatResponse && <p className="text-sm lowercase">{chatResponse}</p>}
+            {chatMessages.map((message, index) => (
+              <div key={index} className={`mb-2 ${message.type === 'user' ? 'text-right' : ''}`}>
+                <span className={`inline-block p-2 rounded-lg text-sm lowercase ${
+                  message.type === 'user' ? 'bg-gray-200' : 'bg-[#D20F77] text-white'
+                }`}>
+                  {message.content}
+                </span>
+              </div>
+            ))}
           </div>
           <form onSubmit={handleChatSubmit}>
             <input
               type="text"
-              value={chatMessage}
-              onChange={(e) => setChatMessage(e.target.value)}
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
               placeholder="type your message..."
               className="w-full p-2 border rounded-lg text-sm lowercase"
             />
