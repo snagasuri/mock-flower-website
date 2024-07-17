@@ -8,7 +8,7 @@ import ChatbotForm from './components/ChatbotForm';
 import { CartProvider } from './contexts/CartContext';
 import PageTransition from './components/PageTransition';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <CartProvider>
@@ -24,6 +24,6 @@ function App() {
       </CartProvider>
     </Router>
   );
-}
+};
 
 export default App;
